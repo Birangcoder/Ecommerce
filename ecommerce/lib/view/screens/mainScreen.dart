@@ -2,9 +2,13 @@ import 'package:ecommerce/config/routeNameConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/header.dart';
+import '../widgets/searchBar.dart';
+
 class mainScreen extends StatelessWidget {
   final Widget child;
   final int index;
+
   const mainScreen({super.key, required this.child, required this.index});
 
   final dest = const [Text("home"), Text("categories"), Text("cart")];
@@ -14,9 +18,14 @@ class mainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Ecommerce App"),
+        title: header(),
       ),
-      body: child,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: child,
+        ),
+      ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         selectedIndex: index,
@@ -38,16 +47,16 @@ class mainScreen extends StatelessWidget {
           NavigationDestination(
             icon: Icon(Icons.home),
             label: "Home",
-            selectedIcon: Icon(Icons.home, color: Colors.blue,),
+            selectedIcon: Icon(Icons.home, color: Colors.blue),
           ),
           NavigationDestination(
             icon: Icon(Icons.category),
             label: "Categories",
-            selectedIcon: Icon(Icons.category, color: Colors.blue,),
+            selectedIcon: Icon(Icons.category, color: Colors.blue),
           ),
           NavigationDestination(
             icon: Icon(Icons.shopping_cart),
-            selectedIcon: Icon(Icons.shopping_cart, color: Colors.blue,),
+            selectedIcon: Icon(Icons.shopping_cart, color: Colors.blue),
             label: "Cart",
           ),
         ],

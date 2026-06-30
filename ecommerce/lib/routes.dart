@@ -1,16 +1,33 @@
+import 'package:ecommerce/view/screens/SearchPage.dart';
 import 'package:ecommerce/view/screens/carts.dart';
 import 'package:ecommerce/view/screens/categories.dart';
 import 'package:ecommerce/view/screens/home.dart';
 import 'package:ecommerce/view/screens/mainScreen.dart';
 import 'package:ecommerce/view/screens/productDetails.dart';
 import 'package:ecommerce/view/screens/products.dart';
-import 'package:ecommerce/view/screens/searchPage.dart';
 import 'package:go_router/go_router.dart';
 
 import 'config/routeNameConfig.dart';
 
 final router = GoRouter(
   routes: [
+    GoRoute(
+      path: '/searchPage',
+      name: AppRoute.searchPage,
+      builder: (_, _) => SearchPage(),
+    ),
+    GoRoute(
+      path: '/products',
+      name: AppRoute.product,
+      builder: (_, _) => const products(),
+      routes: [
+        GoRoute(
+          path: ':id',
+          name: AppRoute.productDetails,
+          builder: (_, _) => productDetails(),
+        ),
+      ],
+    ),
     ShellRoute(
       builder: (context, state, child) {
         int index = 0;
@@ -36,19 +53,6 @@ final router = GoRouter(
         ),
 
         GoRoute(
-          path: '/products',
-          name: AppRoute.product,
-          builder: (_, _) => const products(),
-          routes: [
-            GoRoute(
-              path: ':id',
-              name: AppRoute.productDetails,
-              builder: (_, _) => productDetails(),
-            ),
-          ],
-        ),
-
-        GoRoute(
           path: '/carts',
           name: AppRoute.carts,
           builder: (_, _) => carts(),
@@ -58,12 +62,6 @@ final router = GoRouter(
           path: '/categories',
           name: AppRoute.categories,
           builder: (_, _) => categories(),
-        ),
-
-        GoRoute(
-          path: '/searchPage',
-          name: AppRoute.searchPage,
-          builder: (_, _) => searchScreen(),
         ),
       ],
     ),
