@@ -35,6 +35,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   go_router:
+#  carousel_slider:
+#  flutter_native_splash:
+  http: ^1.0.0
+  flutter_riverpod:
+  riverpod:
 
 dev_dependencies:
   flutter_test:
