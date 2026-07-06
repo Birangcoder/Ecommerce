@@ -6,7 +6,7 @@ final repositoryProvider = Provider<productRepositiory>((ref) {
   return productRepositiory();
 });
 
-class productNotifier extends AsyncNotifier<List<ProductModel>> {
+class ProductNotifier extends AsyncNotifier<List<ProductModel>> {
   @override
   Future<List<ProductModel>> build() async {
     final repo = ref.read(repositoryProvider);
@@ -20,6 +20,6 @@ class productNotifier extends AsyncNotifier<List<ProductModel>> {
   }
 }
 
-final productProvider = AsyncNotifierProvider<productNotifier, List<ProductModel>>(
-  productNotifier.new,
+final productProvider = AsyncNotifierProvider<ProductNotifier, List<ProductModel>>(
+  ProductNotifier.new,
 );

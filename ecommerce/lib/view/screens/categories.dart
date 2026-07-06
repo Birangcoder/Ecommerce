@@ -56,6 +56,7 @@ class categories extends ConsumerWidget {
                           return CategoryCard(
                             image: c.image,
                             name: c.name,
+                            slug: c.slug,
                           );
                         },
                       );

@@ -20,11 +20,9 @@ class mainScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: header(),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: child,
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: child,
       ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,

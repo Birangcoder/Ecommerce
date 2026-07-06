@@ -29,7 +29,6 @@ class HomeScreen extends ConsumerWidget {
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       int crossAxisCount;
-
                       if (constraints.maxWidth < 600) {
                         // Mobile
                         crossAxisCount = 2;
@@ -58,6 +57,7 @@ class HomeScreen extends ConsumerWidget {
                           final p = list[index];
 
                           return ProductCard(
+                            id: p.id,
                             image: p.image,
                             name: p.name,
                             price: "₹${p.price}",

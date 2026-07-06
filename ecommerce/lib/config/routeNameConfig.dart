@@ -5,4 +5,5 @@ class AppRoute{
   static const product = 'product';
   static const productDetails = 'productDetails';
   static const searchPage = 'searchPage';
+  static const resultPage = 'resultPage';
 }

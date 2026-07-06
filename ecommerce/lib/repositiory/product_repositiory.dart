@@ -18,4 +18,18 @@ class productRepositiory {
 
     return list.map((e) => ProductModel.fromJson(e)).toList();
   }
+
+  Future<ProductModel> getProductById(int id) async {
+    final response = await http.get(
+      Uri.parse("${Api.Products}$id"),
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to load product details');
+    }
+
+    final json = jsonDecode(response.body);
+
+    return ProductModel.fromJson(json);
+  }
 }

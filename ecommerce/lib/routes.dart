@@ -5,6 +5,7 @@ import 'package:ecommerce/view/screens/home.dart';
 import 'package:ecommerce/view/screens/mainScreen.dart';
 import 'package:ecommerce/view/screens/productDetails.dart';
 import 'package:ecommerce/view/screens/products.dart';
+import 'package:ecommerce/view/screens/resultPage.dart';
 import 'package:go_router/go_router.dart';
 
 import 'config/routeNameConfig.dart';
@@ -24,9 +25,21 @@ final router = GoRouter(
         GoRoute(
           path: ':id',
           name: AppRoute.productDetails,
-          builder: (_, _) => productDetails(),
+          builder: (context, state) {
+            final id = state.pathParameters['id']!;
+            return productDetails(id: id);
+          },
         ),
       ],
+    ),
+    GoRoute(
+      path: '/result/:category',
+      name: AppRoute.resultPage,
+      builder: (context, state) {
+        final category = state.pathParameters['category']!;
+
+        return ResultPage(cate: category);
+      },
     ),
     ShellRoute(
       builder: (context, state, child) {
@@ -63,6 +76,8 @@ final router = GoRouter(
           name: AppRoute.categories,
           builder: (_, _) => categories(),
         ),
+
+
       ],
     ),
   ],
