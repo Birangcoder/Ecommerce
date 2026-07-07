@@ -1,4 +1,6 @@
+import 'package:ecommerce/config/routeNameConfig.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -9,7 +11,7 @@ class SearchPage extends StatelessWidget {
       appBar: AppBar(
         title: TextField(
           decoration: InputDecoration(
-            hintText: "Search for fruits, milk, rice...",
+            hintText: "Search here...",
             contentPadding: const EdgeInsets.symmetric(horizontal: 20),
 
             border: OutlineInputBorder(
@@ -29,6 +31,13 @@ class SearchPage extends StatelessWidget {
 
             prefixIcon: const Icon(Icons.search),
           ),
+          onSubmitted: (value) {
+            context.pushNamed(
+              AppRoute.resultPage,
+              pathParameters: {"category": value},
+              extra: 'search'
+            );
+          },
         ),
       ),
       body: Padding(

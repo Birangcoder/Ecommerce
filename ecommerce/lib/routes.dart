@@ -37,8 +37,8 @@ final router = GoRouter(
       name: AppRoute.resultPage,
       builder: (context, state) {
         final category = state.pathParameters['category']!;
-
-        return ResultPage(cate: category);
+        final type = state.extra as String;
+        return ResultPage(search: category, type: type);
       },
     ),
     ShellRoute(
@@ -76,8 +76,6 @@ final router = GoRouter(
           name: AppRoute.categories,
           builder: (_, _) => categories(),
         ),
-
-
       ],
     ),
   ],

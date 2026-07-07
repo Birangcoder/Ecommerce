@@ -1,6 +1,7 @@
 import 'package:ecommerce/models/products_model.dart';
 import 'package:riverpod/riverpod.dart';
 
+import '../config/searchParameter.dart';
 import '../repositiory/ResultRepository.dart';
 
 final repositoryProvider = Provider<ResultRepository>((ref) {
@@ -8,18 +9,18 @@ final repositoryProvider = Provider<ResultRepository>((ref) {
 });
 
 class ResultNotifier extends AsyncNotifier<List<ProductModel>> {
-  ResultNotifier(this.category);
+  ResultNotifier(this.search);
 
-  final String category;
+  final Search search;
 
   @override
   Future<List<ProductModel>> build() async {
     final repo = ref.read(repositoryProvider);
-    return repo.getProducts(category);
+    return repo.getProducts(search.search, search.type);
   }
 }
 
 final resultProvider =
-    AsyncNotifierProvider.family<ResultNotifier, List<ProductModel>, String>(
+    AsyncNotifierProvider.family<ResultNotifier, List<ProductModel>, Search>(
       ResultNotifier.new,
     );

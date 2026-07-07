@@ -3,18 +3,20 @@ import 'package:ecommerce/providers/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../config/searchParameter.dart';
 import '../widgets/productCard.dart';
 
 class ResultPage extends ConsumerWidget {
-  final String cate;
+  final String search;
+  final String type;
 
-  const ResultPage({super.key, required this.cate});
+  const ResultPage({super.key, required this.search, required this.type});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final result = ref.watch(resultProvider(cate));
+    final result = ref.watch(resultProvider(Search(search: search, type: type)));
     return Scaffold(
-      appBar: AppBar(title: Text("Header")),
+      appBar: AppBar(title: Text(search)),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15.0),

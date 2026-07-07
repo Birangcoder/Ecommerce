@@ -17,6 +17,7 @@ class CategoryCard extends StatelessWidget {
         context.pushNamed(
           AppRoute.resultPage,
           pathParameters: {"category": slug},
+          extra: 'category'
         );
       },
       child: Container(

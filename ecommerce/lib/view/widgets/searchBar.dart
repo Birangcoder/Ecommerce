@@ -33,7 +33,7 @@ class searchBar extends StatelessWidget {
               Icon(Icons.search, color: Colors.grey),
               SizedBox(width: 10),
               Text(
-                "Search for fruits, milk, rice...",
+                "Search here...",
                 style: TextStyle(color: Colors.grey, fontSize: 16),
               ),
             ],
