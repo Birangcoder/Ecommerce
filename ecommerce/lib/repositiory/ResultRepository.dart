@@ -7,14 +7,13 @@ import 'package:http/http.dart' as http;
 class ResultRepository{
   Future<List<ProductModel>> getProducts(String search, String type) async{
     String url;
-print("search: $search - type: $type");
     switch (type) {
       case "search":
-        url = "${Api.search}$search";
+        url = Api.search(search);
         break;
 
       case "category":
-        url = "${Api.productCategory}$search";
+        url = Api.category(search);
         break;
 
       default:
@@ -30,7 +29,6 @@ print("search: $search - type: $type");
 
     final json = jsonDecode(response.body);
     final list = json['products'] as List;
-print(response.body);
     return list.map((e) => ProductModel.fromJson(e)).toList();
   }
 }

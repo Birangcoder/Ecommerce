@@ -7,7 +7,7 @@ import '../config/apiConfig.dart';
 
 class productRepositiory {
   Future<List<ProductModel>> getProducts() async {
-    final response = await http.get(Uri.parse("${Api.Products}?limit=20"));
+    final response = await http.get(Uri.parse("${Api.products}?limit=20"));
 
     if (response.statusCode != 200) {
       throw Exception('failed to load products');
@@ -15,13 +15,12 @@ class productRepositiory {
 
     final json = jsonDecode(response.body);
     final list = json['products'] as List;
-
     return list.map((e) => ProductModel.fromJson(e)).toList();
   }
 
   Future<ProductModel> getProductById(int id) async {
     final response = await http.get(
-      Uri.parse("${Api.Products}$id"),
+      Uri.parse(Api.product(id)),
     );
 
     if (response.statusCode != 200) {

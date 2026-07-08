@@ -7,7 +7,7 @@ import '../config/apiConfig.dart';
 class CategoryRepository {
   Future<List<CategoryModel>> getCategories() async {
     // First API
-    final response = await http.get(Uri.parse(Api.category));
+    final response = await http.get(Uri.parse(Api.categories));
 
     if (response.statusCode != 200) {
       throw Exception("Failed to load categories");
@@ -23,7 +23,7 @@ class CategoryRepository {
 
       // Second API
       final productResponse = await http.get(
-        Uri.parse("${Api.productCategory}$slug?limit=1"),
+        Uri.parse("${Api.category(slug)}?limit=1"),
       );
 
       if (productResponse.statusCode != 200) {
