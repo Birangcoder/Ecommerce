@@ -40,6 +40,8 @@ dependencies:
   http: ^1.0.0
   flutter_riverpod:
   riverpod:
+  fluttertoast:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

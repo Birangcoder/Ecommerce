@@ -1,17 +1,41 @@
+import 'package:ecommerce/providers/authProvider.dart';
 import 'package:ecommerce/view/screens/SearchPage.dart';
 import 'package:ecommerce/view/screens/carts.dart';
 import 'package:ecommerce/view/screens/categories.dart';
 import 'package:ecommerce/view/screens/home.dart';
+import 'package:ecommerce/view/screens/login.dart';
 import 'package:ecommerce/view/screens/mainScreen.dart';
 import 'package:ecommerce/view/screens/productDetails.dart';
 import 'package:ecommerce/view/screens/products.dart';
 import 'package:ecommerce/view/screens/resultPage.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'config/routeNameConfig.dart';
 
 final router = GoRouter(
+  redirect: (context, state){
+    final container = ProviderScope.containerOf(context);
+    final isLoggedIn = container.read(authProvider).value != null;
+    final isLoginPage = state.matchedLocation == '/login';
+
+    if(!isLoggedIn && !isLoginPage){
+      return '/login';
+    }
+
+    if(isLoggedIn && isLoginPage){
+      return '/';
+    }
+
+    return null;
+  },
+
   routes: [
+    GoRoute(
+      path: '/login',
+      name: AppRoute.login,
+      builder: (_, _) => Login(),
+    ),
     GoRoute(
       path: '/searchPage',
       name: AppRoute.searchPage,
