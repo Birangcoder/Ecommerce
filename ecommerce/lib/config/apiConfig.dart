@@ -16,4 +16,7 @@ class Api {
   static String cart(int id) => "$baseUrl/carts/$id";
 
   static String user(int id) => "$baseUrl/users/$id";
+
+  static String currentUser = "$baseUrl/auth/me";
+
 }

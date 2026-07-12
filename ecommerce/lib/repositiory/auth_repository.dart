@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../config/apiConfig.dart';
+import '../models/UserProfile.dart';
 import '../models/login_response.dart';
 
 class AuthRepository {
@@ -21,5 +22,18 @@ class AuthRepository {
     }
 
     throw Exception("Login Failed");
+  }
+
+  Future<UserProfile> getCurrentUser(String accessToken) async {
+    final response = await http.get(
+      Uri.parse(Api.currentUser),
+      headers: {"Authorization": "Bearer $accessToken"},
+    );
+
+    if (response.statusCode == 200) {
+      return UserProfile.fromJson(jsonDecode(response.body));
+    }
+
+    throw Exception("Token invalid");
   }
 }
