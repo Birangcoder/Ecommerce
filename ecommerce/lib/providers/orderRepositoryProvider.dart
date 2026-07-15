@@ -17,7 +17,18 @@ class OrderNotifier extends AsyncNotifier<List<OrderItem>> {
   Future<List<OrderItem>> build() =>
       ref.watch(orderRepositoryProvider).getAll();
 
-  Future<void> placeOrder(List<OrderItem> orders) async {
+  /// Place a single order (e.g. Buy Now on product detail page)
+  Future<void> placeOrder(OrderItem order) async {
+    final repo = ref.read(orderRepositoryProvider);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      await repo.insert(order);
+      return repo.getAll();
+    });
+  }
+
+  /// Place multiple orders at once (e.g. checkout from cart)
+  Future<void> placeOrders(List<OrderItem> orders) async {
     final repo = ref.read(orderRepositoryProvider);
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {

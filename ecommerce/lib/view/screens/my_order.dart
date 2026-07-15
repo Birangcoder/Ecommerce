@@ -51,10 +51,12 @@ class MyOrderScreen extends ConsumerWidget {
 
 class OrderCard extends StatelessWidget {
   final OrderItem order;
+
   const OrderCard({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
+    print(order.thumbnail);
     return Card(
       color: const Color(0xFFFFFFFF),
       elevation: 1.5,
@@ -66,7 +68,11 @@ class OrderCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const Icon(Icons.access_time, color: Color(0xFF6a7282), size: 15),
+                const Icon(
+                  Icons.access_time,
+                  color: Color(0xFF6a7282),
+                  size: 15,
+                ),
                 const SizedBox(width: 5),
                 Text(
                   DateFormat('dd MMM yyyy, hh:mm a').format(order.orderedAt),
@@ -76,6 +82,7 @@ class OrderCard extends StatelessWidget {
                     fontSize: 15,
                   ),
                 ),
+
               ],
             ),
             const SizedBox(height: 6),
@@ -93,10 +100,17 @@ class OrderCard extends StatelessWidget {
                   ),
                   height: 85,
                   width: 85,
-                  child: const Icon(
-                    Icons.shopping_bag_outlined,
-                    color: Color(0xFFCA8A04),
-                    size: 34,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      order.thumbnail!,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const Icon(
+                        Icons.shopping_bag_outlined,
+                        color: Color(0xFFCA8A04),
+                        size: 34,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -142,7 +156,11 @@ class OrderCard extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                const Icon(Icons.payment_outlined, color: Color(0xFF6B717D), size: 20),
+                const Icon(
+                  Icons.payment_outlined,
+                  color: Color(0xFF6B717D),
+                  size: 20,
+                ),
                 const SizedBox(width: 5),
                 Text(
                   "Paid via ${order.paymentMethod}",

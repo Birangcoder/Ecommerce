@@ -19,7 +19,7 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 2, // bump this every time you change schema
+      version: 1, // bump this every time you change schema
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -43,33 +43,13 @@ class AppDatabase {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       productId INTEGER NOT NULL,
       title TEXT NOT NULL,
+      thumbnail TEXT NOT NULL,
       price REAL NOT NULL,
       quantity INTEGER NOT NULL DEFAULT 1,
       paymentMethod TEXT NOT NULL,
       orderedAt TEXT NOT NULL
     )
   ''');
-
-    await db.execute('''
-      CREATE TABLE recent_view (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        refId INTEGER NOT NULL,
-        title TEXT NOT NULL,
-        thumbnail TEXT,
-        type TEXT NOT NULL,
-        viewedAt TEXT NOT NULL
-      )
-    ''');
-
-    await db.execute('''
-      CREATE TABLE recent_search (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        thumbnail TEXT,
-        type TEXT NOT NULL,
-        searchedAt TEXT NOT NULL
-      )
-    ''');
 
     await db.execute('''
       CREATE TABLE wishlist (
@@ -90,14 +70,9 @@ class AppDatabase {
       await db.execute('drop TABLE recent_view');
     }
     // version 2 -> 3 added a whole new table
-    // if (oldVersion < 3) {
-    //   await db.execute('''
-    //     CREATE TABLE IF NOT EXISTS coupons (
-    //       id INTEGER PRIMARY KEY AUTOINCREMENT,
-    //       code TEXT NOT NULL
-    //     )
-    //   ''');
-    // }
+    if (oldVersion < 3) {
+      await db.execute('ALTER TABLE orders ADD COLUMN thumbnail TEXT');
+    }
     // keep stacking "if (oldVersion < X)" blocks for each future change
   }
 

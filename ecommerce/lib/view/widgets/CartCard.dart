@@ -70,8 +70,8 @@ class CartCard extends ConsumerWidget {
                         "₹${item.price}",
                         style: const TextStyle(
                           color: Color(0xFF2d5f3f),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
                         ),
                       ),
                       const Spacer(),

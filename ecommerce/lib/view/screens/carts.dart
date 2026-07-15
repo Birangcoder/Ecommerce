@@ -3,14 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../models/OrderItem.dart';
 import '../../providers/cartRepositoryProvider.dart';
+import '../../providers/orderRepositoryProvider.dart';
+import '../../utils.dart';
 import '../widgets/CartCard.dart';
 
-class Carts extends ConsumerWidget {
+class Carts extends ConsumerStatefulWidget {
   const Carts({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<Carts> createState() => _CartsState();
+}
+
+class _CartsState extends ConsumerState<Carts> {
+  String selectedPaymentMethod = "COD"; // default; swap via UI below
+  bool isPlacingOrder = false;
+
+  @override
+  Widget build(BuildContext context) {
     final cartAsync = ref.watch(cartNotifierProvider);
 
     return Scaffold(
@@ -44,12 +55,11 @@ class Carts extends ConsumerWidget {
             );
           }
 
-          // ---- bill calculations derived from real cart data ----
           final itemTotal = cartList.fold<double>(
             0,
-                (sum, item) => sum + item.total,
+            (sum, item) => sum + item.total,
           );
-          const deliveryFee = 30.0; // replace with your real logic/config
+          const deliveryFee = 30.0;
           final toPay = itemTotal + deliveryFee;
 
           return SingleChildScrollView(
@@ -62,12 +72,50 @@ class Carts extends ConsumerWidget {
                   itemCount: cartList.length,
                   itemBuilder: (context, index) {
                     final item = cartList[index];
-
-                    return CartCard(
-                      key: ValueKey(item.id),
-                      item: item,
-                    );
+                    return CartCard(key: ValueKey(item.id), item: item);
                   },
+                ),
+
+                const SizedBox(height: 15),
+
+                // Payment method selector — required since OrderItem.paymentMethod
+                // has no source elsewhere in this screen.
+                Card(
+                  elevation: 1.5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Payment Method",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          ),
+                        ),
+                        RadioListTile<String>(
+                          contentPadding: EdgeInsets.zero,
+                          title: const Text("Cash on Delivery"),
+                          value: "COD",
+                          groupValue: selectedPaymentMethod,
+                          onChanged: (v) =>
+                              setState(() => selectedPaymentMethod = v!),
+                        ),
+                        RadioListTile<String>(
+                          contentPadding: EdgeInsets.zero,
+                          title: const Text("UPI"),
+                          value: "UPI",
+                          groupValue: selectedPaymentMethod,
+                          onChanged: (v) =>
+                              setState(() => selectedPaymentMethod = v!),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
 
                 const SizedBox(height: 15),
@@ -100,6 +148,9 @@ class Carts extends ConsumerWidget {
                     ),
                   ),
                 ),
+
+                // spacing so bottomNavigationBar doesn't overlap last card
+                const SizedBox(height: 80),
               ],
             ),
           );
@@ -136,7 +187,10 @@ class Carts extends ConsumerWidget {
                       children: [
                         Text(
                           "Total Amount",
-                          style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey[600],
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -153,10 +207,9 @@ class Carts extends ConsumerWidget {
                   SizedBox(
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {
-                        // TODO: navigate to checkout, then call
-                        // ref.read(orderNotifierProvider.notifier).placeOrder(...)
-                      },
+                      onPressed: isPlacingOrder
+                          ? null
+                          : () => _checkout(cartList),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF2d5f3f),
                         foregroundColor: Colors.white,
@@ -166,19 +219,28 @@ class Carts extends ConsumerWidget {
                         ),
                         elevation: 2,
                       ),
-                      child: const Row(
-                        children: [
-                          Icon(Icons.shopping_cart_checkout, size: 20),
-                          SizedBox(width: 8),
-                          Text(
-                            "Checkout",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                      child: isPlacingOrder
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Row(
+                              children: [
+                                Icon(Icons.shopping_cart_checkout, size: 20),
+                                SizedBox(width: 8),
+                                Text(
+                                  "Checkout",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                 ],
@@ -191,12 +253,50 @@ class Carts extends ConsumerWidget {
     );
   }
 
+  Future<void> _checkout(List<dynamic> cartList) async {
+    // print("cart page +++++++++++++++++++       ${cartList.first.toMap.value}");
+    setState(() => isPlacingOrder = true);
+
+    // Map every cart item to an OrderItem — adjust field names below
+    // if your CartItem model differs (e.g. item.productId vs item.id).
+    final orders = cartList.map((item) {
+      print(item.thumbnail);
+      return OrderItem(
+        productId: item.productId,
+        title: item.title,
+        thumbnail: item.thumbnail,
+        price: item.price,
+        quantity: item.quantity,
+        paymentMethod: selectedPaymentMethod,
+        orderedAt: DateTime.now(),
+      );
+    }).toList();
+
+    try {
+      await ref.read(orderNotifierProvider.notifier).placeOrders(orders);
+      // Clear the cart after a successful order — adjust to your
+      // cartNotifierProvider's actual clear method name.
+      await ref.read(cartNotifierProvider.notifier).clearCart();
+
+      if (mounted) {
+        Utils.toastMessage("Order placed successfully");
+        context.pushNamed(AppRoute.myOrder); // navigate to orders list
+      }
+    } catch (e) {
+      if (mounted) {
+        Utils.toastMessage("Failed to place order: $e");
+      }
+    } finally {
+      if (mounted) setState(() => isPlacingOrder = false);
+    }
+  }
+
   Widget rowText(
-      String title,
-      double value, {
-        bool isBold = false,
-        bool isFinal = false,
-      }) {
+    String title,
+    double value, {
+    bool isBold = false,
+    bool isFinal = false,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
@@ -212,7 +312,9 @@ class Carts extends ConsumerWidget {
           Text(
             "₹${value.toStringAsFixed(2)}",
             style: TextStyle(
-              color: isFinal ? const Color(0xFF2d5f3f) : const Color(0xFF101010),
+              color: isFinal
+                  ? const Color(0xFF2d5f3f)
+                  : const Color(0xFF101010),
               fontWeight: FontWeight.w700,
               fontSize: isFinal ? 18 : 14,
             ),
