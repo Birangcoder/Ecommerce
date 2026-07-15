@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../widgets/header.dart';
-import '../widgets/searchBar.dart';
 
 class mainScreen extends StatelessWidget {
   final Widget child;
@@ -37,6 +36,9 @@ class mainScreen extends StatelessWidget {
               context.goNamed(AppRoute.categories);
               break;
             case 2:
+              context.goNamed(AppRoute.profile);
+              break;
+            case 3:
               context.goNamed(AppRoute.carts);
               break;
           }
@@ -51,6 +53,11 @@ class mainScreen extends StatelessWidget {
             icon: Icon(Icons.category),
             label: "Categories",
             selectedIcon: Icon(Icons.category, color: Colors.blue),
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person),
+            selectedIcon: Icon(Icons.person, color: Colors.blue),
+            label: "Profile",
           ),
           NavigationDestination(
             icon: Icon(Icons.shopping_cart),

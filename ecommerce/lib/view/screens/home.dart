@@ -50,7 +50,7 @@ class HomeScreen extends ConsumerWidget {
                         crossAxisCount: crossAxisCount,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
-                        childAspectRatio: 0.72,
+                        childAspectRatio: 0.73,
                       ),
                       itemBuilder: (context, index) {
                         final p = list[index];

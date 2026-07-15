@@ -22,9 +22,9 @@ class CategoryCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          // color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
+          // boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class CategoryCard extends StatelessWidget {
                 top: Radius.circular(16),
               ),
               child: Container(
-                color: const Color(0xFFFFF9E6),
+                color: const Color(0xFFFFFFFF),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: LayoutBuilder(
@@ -61,7 +61,7 @@ class CategoryCard extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontWeight: FontWeight.w600),
                     ),

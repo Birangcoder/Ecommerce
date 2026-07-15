@@ -19,9 +19,9 @@ class header extends StatelessWidget {
         const Spacer(),
         IconButton(
           onPressed: () {
-            context.goNamed(AppRoute.carts);
+            context.pushNamed(AppRoute.wishList);
           },
-          icon: const Icon(Icons.shopping_cart, color: Color(0xFF2B3745)),
+          icon: const Icon(Icons.favorite, color: Colors.blueGrey),
         ),
       ],
     );

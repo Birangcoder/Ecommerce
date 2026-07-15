@@ -1,14 +1,19 @@
 import 'package:ecommerce/providers/authProvider.dart';
 import 'package:ecommerce/providers/goRouterProvider.dart';
 import 'package:ecommerce/view/screens/SearchPage.dart';
+import 'package:ecommerce/view/screens/WishlistPage.dart';
 import 'package:ecommerce/view/screens/carts.dart';
 import 'package:ecommerce/view/screens/categories.dart';
+import 'package:ecommerce/view/screens/helpSupport.dart';
 import 'package:ecommerce/view/screens/home.dart';
 import 'package:ecommerce/view/screens/login.dart';
 import 'package:ecommerce/view/screens/mainScreen.dart';
+import 'package:ecommerce/view/screens/my_order.dart';
 import 'package:ecommerce/view/screens/productDetails.dart';
 import 'package:ecommerce/view/screens/products.dart';
+import 'package:ecommerce/view/screens/profile.dart';
 import 'package:ecommerce/view/screens/resultPage.dart';
+import 'package:ecommerce/view/screens/userDetails.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -34,15 +39,31 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
 
     routes: [
-      GoRoute(
-        path: '/login',
-        name: AppRoute.login,
-        builder: (_, _) => Login(),
-      ),
+      GoRoute(path: '/login', name: AppRoute.login, builder: (_, _) => Login()),
       GoRoute(
         path: '/searchPage',
         name: AppRoute.searchPage,
         builder: (_, _) => SearchPage(),
+      ),
+      GoRoute(
+        path: '/WishlistPage',
+        name: AppRoute.wishList,
+        builder: (_, _) => WishlistPage(),
+      ),
+      GoRoute(
+        path: '/userDetails',
+        name: AppRoute.userDetails,
+        builder: (_, _) => UserDetails(),
+      ),
+      GoRoute(
+        path: '/myOrder',
+        name: AppRoute.myOrder,
+        builder: (_, _) => MyOrderScreen(),
+      ),
+      GoRoute(
+        path: '/helpSupport',
+        name: AppRoute.helpSupport,
+        builder: (_, _) => HelpSupport(),
       ),
       GoRoute(
         path: '/products',
@@ -54,7 +75,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             name: AppRoute.productDetails,
             builder: (context, state) {
               final id = state.pathParameters['id']!;
-              return productDetails(id: id);
+              return ProductDetails(id: id);
             },
           ),
         ],
@@ -78,8 +99,11 @@ final routerProvider = Provider<GoRouter>((ref) {
             case '/categories':
               index = 1;
               break;
-            case '/carts':
+            case '/profile':
               index = 2;
+              break;
+            case '/carts':
+              index = 3;
               break;
           }
 
@@ -95,7 +119,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/carts',
             name: AppRoute.carts,
-            builder: (_, _) => carts(),
+            builder: (_, _) => Carts(),
+          ),
+
+          GoRoute(
+            path: '/profile',
+            name: AppRoute.profile,
+            builder: (_, _) => ProfileScreen(),
           ),
 
           GoRoute(

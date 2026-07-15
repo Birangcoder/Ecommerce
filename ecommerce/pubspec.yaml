@@ -42,6 +42,10 @@ dependencies:
   riverpod:
   fluttertoast:
   shared_preferences:
+  flutter_secure_storage: ^10.3.1
+  path: ^1.9.1
+  sqflite: ^2.4.3
+  intl:
 
 dev_dependencies:
   flutter_test:

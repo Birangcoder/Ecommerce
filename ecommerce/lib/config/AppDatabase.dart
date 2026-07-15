@@ -19,7 +19,7 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 1, // bump this every time you change schema
+      version: 2, // bump this every time you change schema
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -86,17 +86,18 @@ class AppDatabase {
   Future _upgradeDB(Database db, int oldVersion, int newVersion) async {
     // Example: version 1 -> 2 added a new column
     if (oldVersion < 2) {
-      await db.execute('ALTER TABLE wishlist ADD COLUMN note TEXT');
+      await db.execute('drop TABLE recent_search');
+      await db.execute('drop TABLE recent_view');
     }
     // version 2 -> 3 added a whole new table
-    if (oldVersion < 3) {
-      await db.execute('''
-        CREATE TABLE IF NOT EXISTS coupons (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          code TEXT NOT NULL
-        )
-      ''');
-    }
+    // if (oldVersion < 3) {
+    //   await db.execute('''
+    //     CREATE TABLE IF NOT EXISTS coupons (
+    //       id INTEGER PRIMARY KEY AUTOINCREMENT,
+    //       code TEXT NOT NULL
+    //     )
+    //   ''');
+    // }
     // keep stacking "if (oldVersion < X)" blocks for each future change
   }
 

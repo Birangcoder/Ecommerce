@@ -7,4 +7,9 @@ class AppRoute{
   static const searchPage = 'searchPage';
   static const resultPage = 'resultPage';
   static const login = 'login';
+  static const wishList = 'wishlist';
+  static const profile = 'profile';
+  static const userDetails = 'userDetails';
+  static const myOrder = 'myOrder';
+  static const helpSupport = 'helpSupport';
 }

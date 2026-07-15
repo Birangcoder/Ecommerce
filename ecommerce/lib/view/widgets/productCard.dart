@@ -30,9 +30,9 @@ class ProductCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          // color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
+          // boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                     top: Radius.circular(16),
                   ),
                   child: Container(
-                    color: const Color(0xFFFFF9E6),
+                    color: const Color(0xFFFFFFFF),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: LayoutBuilder(
@@ -73,7 +73,7 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 14,
@@ -81,30 +81,27 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 10),
-
-                    Text(
-                      "⭐ $rating",
-                      style: const TextStyle(color: Colors.grey, fontSize: 12),
-                    ),
-
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 5),
 
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Text(
+                          "⭐ $rating",
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+
                         /// 💰 PRICE
-                        Row(
-                          children: [
-                            Text(
-                              price,
-                              style: const TextStyle(
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
+                        Text(
+                          price,
+                          style: const TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ],
                     ),

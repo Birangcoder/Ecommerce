@@ -185,8 +185,8 @@ class _LoginState extends ConsumerState<Login> {
                                           ref
                                               .read(authProvider.notifier)
                                               .login(
-                                                userNameController.text,
-                                                passwordController.text,
+                                                userNameController.text.trim(),
+                                                passwordController.text.trim(),
                                               );
                                         }
                                       },
