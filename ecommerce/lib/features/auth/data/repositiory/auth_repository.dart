@@ -14,11 +14,19 @@ class AuthRepository {
     final response = await http.post(
       Uri.parse(Api.login),
       headers: {"Content-Type": "application/json"},
-      body: jsonEncode({"username": username, "password": password}),
+      body: jsonEncode({
+        "username": username,
+        "password": password,
+        "expiresInMins": 30,
+      }),
     );
 
     if (response.statusCode == 200) {
       return LoginResponse.fromJson(jsonDecode(response.body));
+    }
+
+    if (response.statusCode == 401) {
+      print('Token expired or invalid — forcing logout');
     }
 
     throw Exception("Login Failed");
@@ -32,6 +40,10 @@ class AuthRepository {
 
     if (response.statusCode == 200) {
       return UserProfile.fromJson(jsonDecode(response.body));
+    }
+
+    if (response.statusCode == 401) {
+      print('Token expired or invalid — forcing logout');
     }
 
     throw Exception("Token invalid");
