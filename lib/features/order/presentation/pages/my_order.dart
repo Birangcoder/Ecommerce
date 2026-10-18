@@ -56,7 +56,6 @@ class OrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(order.thumbnail);
     return Card(
       color: const Color(0xFFFFFFFF),
       elevation: 1.5,

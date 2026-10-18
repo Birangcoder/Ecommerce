@@ -259,7 +259,6 @@ class _CartsState extends ConsumerState<Carts> {
     // Map every cart item to an OrderItem — adjust field names below
     // if your CartItem model differs (e.g. item.productId vs item.id).
     final orders = cartList.map((item) {
-      print(item.thumbnail);
       return OrderItem(
         productId: item.productId,
         title: item.title,

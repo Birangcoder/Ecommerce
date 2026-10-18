@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/constants/apiConfig.dart';
@@ -26,7 +27,9 @@ class AuthRepository {
     }
 
     if (response.statusCode == 401) {
-      print('Token expired or invalid — forcing logout');
+      if (kDebugMode) {
+        debugPrint('Token expired or invalid — forcing logout');
+      }
     }
 
     throw Exception("Login Failed");
@@ -43,7 +46,9 @@ class AuthRepository {
     }
 
     if (response.statusCode == 401) {
-      print('Token expired or invalid — forcing logout');
+      if (kDebugMode) {
+        debugPrint('Token expired or invalid — forcing logout');
+      }
     }
 
     throw Exception("Token invalid");
