@@ -5,10 +5,6 @@ class products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("products screen"),
-      ),
-    );
+    return Scaffold(body: Center(child: Text("products screen")));
   }
 }

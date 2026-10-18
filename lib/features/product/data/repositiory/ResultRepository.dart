@@ -4,8 +4,8 @@ import 'package:ecommerce/core/constants/apiConfig.dart';
 import 'package:ecommerce/features/product/data/model/products_model.dart';
 import 'package:http/http.dart' as http;
 
-class ResultRepository{
-  Future<List<ProductModel>> getProducts(String search, String type) async{
+class ResultRepository {
+  Future<List<ProductModel>> getProducts(String search, String type) async {
     String url;
     switch (type) {
       case "search":
@@ -22,8 +22,7 @@ class ResultRepository{
 
     final response = await http.get(Uri.parse(url));
 
-
-    if (response.statusCode != 200){
+    if (response.statusCode != 200) {
       throw Exception("Failed to load Result data");
     }
 

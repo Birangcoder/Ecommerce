@@ -8,7 +8,12 @@ class CategoryCard extends StatelessWidget {
   final String image;
   final String slug;
 
-  const CategoryCard({super.key, required this.name, required this.image, required this.slug});
+  const CategoryCard({
+    super.key,
+    required this.name,
+    required this.image,
+    required this.slug,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,7 @@ class CategoryCard extends StatelessWidget {
         context.pushNamed(
           AppRoute.resultPage,
           pathParameters: {"category": slug},
-          extra: 'category'
+          extra: 'category',
         );
       },
       child: Container(

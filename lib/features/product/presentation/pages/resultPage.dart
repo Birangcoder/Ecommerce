@@ -14,7 +14,9 @@ class ResultPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final result = ref.watch(resultProvider(Search(search: search, type: type)));
+    final result = ref.watch(
+      resultProvider(Search(search: search, type: type)),
+    );
     return Scaffold(
       appBar: AppBar(title: Text(search)),
       body: SingleChildScrollView(

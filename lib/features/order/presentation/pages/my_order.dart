@@ -81,7 +81,6 @@ class OrderCard extends StatelessWidget {
                     fontSize: 15,
                   ),
                 ),
-
               ],
             ),
             const SizedBox(height: 6),

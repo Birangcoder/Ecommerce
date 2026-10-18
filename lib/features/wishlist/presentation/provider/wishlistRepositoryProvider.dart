@@ -4,10 +4,13 @@ import '../../../../core/storage/AppDatabase.dart';
 import '../../data/model/WishlistItem.dart';
 import '../../data/repositiory/WishlistRepository.dart';
 
-final appDatabaseProvider = Provider<AppDatabase>((ref) => AppDatabase.instance);
+final appDatabaseProvider = Provider<AppDatabase>(
+  (ref) => AppDatabase.instance,
+);
 
 final wishlistRepositoryProvider = Provider<WishlistRepository>(
-        (ref) => WishlistRepository(ref.watch(appDatabaseProvider)));
+  (ref) => WishlistRepository(ref.watch(appDatabaseProvider)),
+);
 
 class WishlistNotifier extends AsyncNotifier<List<WishlistItem>> {
   @override
@@ -30,4 +33,6 @@ class WishlistNotifier extends AsyncNotifier<List<WishlistItem>> {
 }
 
 final wishlistNotifierProvider =
-AsyncNotifierProvider<WishlistNotifier, List<WishlistItem>>(WishlistNotifier.new);
+    AsyncNotifierProvider<WishlistNotifier, List<WishlistItem>>(
+      WishlistNotifier.new,
+    );

@@ -267,15 +267,9 @@ class ProductDetails extends ConsumerWidget {
               child: Row(
                 children: [
                   Column(
-                    crossAxisAlignment:
-                    CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Price",
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
+                      Text("Price", style: TextStyle(color: Colors.grey)),
                       Text(
                         "₹${p.price}",
                         style: TextStyle(

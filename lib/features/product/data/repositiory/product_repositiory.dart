@@ -19,9 +19,7 @@ class productRepositiory {
   }
 
   Future<ProductModel> getProductById(int id) async {
-    final response = await http.get(
-      Uri.parse(Api.product(id)),
-    );
+    final response = await http.get(Uri.parse(Api.product(id)));
 
     if (response.statusCode != 200) {
       throw Exception('Failed to load product details');

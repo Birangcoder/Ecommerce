@@ -9,7 +9,7 @@ class ReviewModel {
     required this.reviewerName,
   });
 
-  factory ReviewModel.fromJson(Map<String, dynamic> json){
+  factory ReviewModel.fromJson(Map<String, dynamic> json) {
     return ReviewModel(
       rating: json["rating"],
       comment: json["comment"],

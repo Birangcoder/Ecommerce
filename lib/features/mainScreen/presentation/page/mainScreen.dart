@@ -19,10 +19,7 @@ class mainScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: header(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: child,
-      ),
+      body: Padding(padding: const EdgeInsets.all(15.0), child: child),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         selectedIndex: index,

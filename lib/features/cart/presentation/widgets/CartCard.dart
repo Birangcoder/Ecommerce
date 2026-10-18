@@ -78,7 +78,10 @@ class CartCard extends ConsumerWidget {
                       _qtyButton(
                         Icons.remove,
                         item.quantity > 1
-                            ? () => notifier.updateQuantity(item, item.quantity - 1)
+                            ? () => notifier.updateQuantity(
+                                item,
+                                item.quantity - 1,
+                              )
                             : null,
                       ),
                       const SizedBox(width: 8),
@@ -93,7 +96,7 @@ class CartCard extends ConsumerWidget {
                       const SizedBox(width: 8),
                       _qtyButton(
                         Icons.add,
-                            () => notifier.updateQuantity(item, item.quantity + 1),
+                        () => notifier.updateQuantity(item, item.quantity + 1),
                       ),
                     ],
                   ),

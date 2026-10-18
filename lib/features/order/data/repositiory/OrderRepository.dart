@@ -28,8 +28,12 @@ class OrderRepository {
 
   Future<List<OrderItem>> getByPaymentMethod(String method) async {
     final db = await dbProvider.database;
-    final maps = await db.query('orders',
-        where: 'paymentMethod = ?', whereArgs: [method], orderBy: 'orderedAt DESC');
+    final maps = await db.query(
+      'orders',
+      where: 'paymentMethod = ?',
+      whereArgs: [method],
+      orderBy: 'orderedAt DESC',
+    );
     return maps.map(OrderItem.fromMap).toList();
   }
 

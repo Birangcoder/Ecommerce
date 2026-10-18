@@ -21,7 +21,8 @@ class categories extends ConsumerWidget {
                 loading: () => const Center(child: CircularProgressIndicator()),
                 error: (e, s) => Center(child: Text(e.toString())),
                 data: (list) => RefreshIndicator(
-                  onRefresh: () => ref.read(categoryProvider.notifier).refresh(),
+                  onRefresh: () =>
+                      ref.read(categoryProvider.notifier).refresh(),
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       int crossAxisCount;

@@ -18,13 +18,21 @@ class WishlistRepository {
 
   Future<int> deleteByProductId(int productId) async {
     final db = await dbProvider.database;
-    return db.delete('wishlist', where: 'productId = ?', whereArgs: [productId]);
+    return db.delete(
+      'wishlist',
+      where: 'productId = ?',
+      whereArgs: [productId],
+    );
   }
 
   Future<bool> isInWishlist(int productId) async {
     final db = await dbProvider.database;
-    final maps = await db.query('wishlist',
-        where: 'productId = ?', whereArgs: [productId], limit: 1);
+    final maps = await db.query(
+      'wishlist',
+      where: 'productId = ?',
+      whereArgs: [productId],
+      limit: 1,
+    );
     return maps.isNotEmpty;
   }
 }

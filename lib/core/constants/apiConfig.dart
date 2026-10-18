@@ -18,5 +18,4 @@ class Api {
   static String user(int id) => "$baseUrl/users/$id";
 
   static String currentUser = "$baseUrl/auth/me";
-
 }

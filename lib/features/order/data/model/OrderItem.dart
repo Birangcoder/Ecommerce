@@ -22,24 +22,24 @@ class OrderItem {
   double get total => price * quantity;
 
   Map<String, dynamic> toMap() => {
-        'id': id,
-        'productId': productId,
-        'title': title,
-        'thumbnail': thumbnail,
-        'price': price,
-        'quantity': quantity,
-        'paymentMethod': paymentMethod,
-        'orderedAt': orderedAt.toIso8601String(),
-      };
+    'id': id,
+    'productId': productId,
+    'title': title,
+    'thumbnail': thumbnail,
+    'price': price,
+    'quantity': quantity,
+    'paymentMethod': paymentMethod,
+    'orderedAt': orderedAt.toIso8601String(),
+  };
 
   factory OrderItem.fromMap(Map<String, dynamic> m) => OrderItem(
-        id: m['id'] as int?,
-        productId: m['productId'] as int,
-        title: m['title'] as String,
-        thumbnail: m['thumbnail'] as String?,
-        price: (m['price'] as num).toDouble(),
-        quantity: m['quantity'] as int,
-        paymentMethod: m['paymentMethod'] as String,
-        orderedAt: DateTime.parse(m['orderedAt'] as String),
-      );
+    id: m['id'] as int?,
+    productId: m['productId'] as int,
+    title: m['title'] as String,
+    thumbnail: m['thumbnail'] as String?,
+    price: (m['price'] as num).toDouble(),
+    quantity: m['quantity'] as int,
+    paymentMethod: m['paymentMethod'] as String,
+    orderedAt: DateTime.parse(m['orderedAt'] as String),
+  );
 }

@@ -1,4 +1,4 @@
-class AppRoute{
+class AppRoute {
   static const home = 'home';
   static const carts = 'carts';
   static const categories = 'categories';

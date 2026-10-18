@@ -36,7 +36,7 @@ class SearchPage extends StatelessWidget {
             context.pushNamed(
               AppRoute.resultPage,
               pathParameters: {"category": value},
-              extra: 'search'
+              extra: 'search',
             );
           },
         ),
@@ -55,7 +55,7 @@ class SearchPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 15,),
+            const SizedBox(height: 15),
             Wrap(
               spacing: 10,
               runSpacing: 10,
@@ -79,10 +79,7 @@ Widget trendingItem(String text) {
     child: Container(
       color: Color(0xFFFFDDDE),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 17),
-      ),
+      child: Text(text, style: TextStyle(fontSize: 17)),
     ),
   );
 }
