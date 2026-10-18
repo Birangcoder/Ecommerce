@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class Login extends ConsumerStatefulWidget {
-  Login({super.key});
+  const Login({super.key});
 
   @override
   ConsumerState<Login> createState() => _LoginState();

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HelpSupport extends StatelessWidget {
+  const HelpSupport({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class HelpSupport extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 26,
-                backgroundColor: iconColor.withOpacity(.15),
+                backgroundColor: iconColor.withValues(alpha: .15),
                 child: Icon(icon),
               ),
               Column(

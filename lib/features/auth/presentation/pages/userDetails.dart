@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserDetails extends ConsumerWidget {
-  UserDetails({super.key});
+  const UserDetails({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -90,7 +90,7 @@ class _ProfileCard extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.2),
+                  color: Colors.green.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: const Center(
@@ -150,7 +150,7 @@ class _ProfileMenuCard extends StatelessWidget {
           child: ListTile(
             leading: CircleAvatar(
               radius: 26,
-              backgroundColor: iconColor.withOpacity(0.15),
+              backgroundColor: iconColor.withValues(alpha: 0.15),
               child: Icon(icon, color: iconColor, size: 26),
             ),
             title: Text(

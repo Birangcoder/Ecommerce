@@ -1,7 +1,6 @@
 import 'package:ecommerce/features/auth/data/model/UserProfile.dart';
 import 'package:riverpod/riverpod.dart';
 import '../../../../core/storage/secureStorage.dart';
-import '../../data/model/login_response.dart';
 import '../../data/repositiory/auth_repository.dart';
 
 final authRepoProvider = Provider<AuthRepository>((ref) {
