@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../../core/constants/apiConfig.dart';
-import '../model/UserProfile.dart';
+import '../../../../core/constants/api_config.dart';
+import '../model/user_profile.dart';
 import '../model/login_response.dart';
 
 class AuthRepository {

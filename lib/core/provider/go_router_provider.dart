@@ -1,7 +1,7 @@
 import 'package:riverpod/riverpod.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../features/auth/presentation/provider/authProvider.dart';
+import '../../features/auth/presentation/provider/auth_provider.dart';
 
 class GoRouterRefreshNotifier extends ChangeNotifier {
   GoRouterRefreshNotifier(Ref ref) {

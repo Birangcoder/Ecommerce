@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/routeNameConfig.dart';
+import '../../../../core/constants/route_name_config.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

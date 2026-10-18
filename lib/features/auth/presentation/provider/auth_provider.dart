@@ -1,13 +1,13 @@
-import 'package:ecommerce/features/auth/data/model/UserProfile.dart';
+import 'package:ecommerce/features/auth/data/model/user_profile.dart';
 import 'package:riverpod/riverpod.dart';
-import '../../../../core/storage/secureStorage.dart';
+import '../../../../core/storage/secure_storage.dart';
 import '../../data/repositiory/auth_repository.dart';
 
 final authRepoProvider = Provider<AuthRepository>((ref) {
   return AuthRepository();
 });
 
-class authNotifier extends AsyncNotifier<UserProfile?> {
+class AuthNotifier extends AsyncNotifier<UserProfile?> {
   final _secure = SecureStorageService.instance;
 
   @override
@@ -53,6 +53,6 @@ class authNotifier extends AsyncNotifier<UserProfile?> {
   }
 }
 
-final authProvider = AsyncNotifierProvider<authNotifier, UserProfile?>(
-  authNotifier.new,
+final authProvider = AsyncNotifierProvider<AuthNotifier, UserProfile?>(
+  AuthNotifier.new,
 );

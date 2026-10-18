@@ -1,8 +1,8 @@
 import 'package:ecommerce/features/product/data/model/products_model.dart';
 import 'package:riverpod/riverpod.dart';
 
-import '../../../../core/utils/searchParameter.dart';
-import '../../data/repositiory/ResultRepository.dart';
+import '../../../../core/utils/search_parameter.dart';
+import '../../data/repositiory/result_repository.dart';
 
 final repositoryProvider = Provider<ResultRepository>((ref) {
   return ResultRepository();

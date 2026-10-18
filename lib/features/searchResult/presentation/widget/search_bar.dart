@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/routeNameConfig.dart';
+import '../../../../core/constants/route_name_config.dart';
 
-class searchBar extends StatelessWidget {
-  const searchBar({super.key});
+class SearchBar extends StatelessWidget {
+  const SearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {

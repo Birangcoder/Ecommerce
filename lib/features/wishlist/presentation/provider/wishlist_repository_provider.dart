@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/storage/AppDatabase.dart';
-import '../../data/model/WishlistItem.dart';
-import '../../data/repositiory/WishlistRepository.dart';
+import '../../../../core/storage/app_database.dart';
+import '../../data/model/wishlist_item.dart';
+import '../../data/repositiory/wishlist_repository.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) => AppDatabase.instance,

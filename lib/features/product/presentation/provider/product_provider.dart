@@ -2,8 +2,8 @@ import 'package:ecommerce/features/product/data/model/products_model.dart';
 import 'package:ecommerce/features/product/data/repositiory/product_repositiory.dart';
 import 'package:riverpod/riverpod.dart';
 
-final repositoryProvider = Provider<productRepositiory>((ref) {
-  return productRepositiory();
+final repositoryProvider = Provider<ProductRepository>((ref) {
+  return ProductRepository();
 });
 
 class ProductNotifier extends AsyncNotifier<List<ProductModel>> {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart'; // for date formatting — add intl to pubspec if not present
 
-import '../../data/model/OrderItem.dart';
-import '../provider/orderRepositoryProvider.dart';
+import '../../data/model/order_item.dart';
+import '../provider/order_repository_provider.dart';
 
 class MyOrderScreen extends ConsumerWidget {
   const MyOrderScreen({super.key});

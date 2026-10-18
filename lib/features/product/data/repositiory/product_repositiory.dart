@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:ecommerce/features/product/data/model/products_model.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../../core/constants/apiConfig.dart';
+import '../../../../core/constants/api_config.dart';
 
-class productRepositiory {
+class ProductRepository {
   Future<List<ProductModel>> getProducts() async {
     final response = await http.get(Uri.parse("${Api.products}?limit=20"));
 

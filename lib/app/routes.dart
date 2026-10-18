@@ -1,21 +1,21 @@
-import 'package:ecommerce/features/auth/presentation/provider/authProvider.dart';
-import 'package:ecommerce/core/provider/goRouterProvider.dart';
-import 'package:ecommerce/features/searchResult/presentation/pages/SearchPage.dart';
-import 'package:ecommerce/features/wishlist/presentation/pages/WishlistPage.dart';
+import 'package:ecommerce/features/auth/presentation/provider/auth_provider.dart';
+import 'package:ecommerce/core/provider/go_router_provider.dart';
+import 'package:ecommerce/features/searchResult/presentation/pages/search_page.dart';
+import 'package:ecommerce/features/wishlist/presentation/pages/wishlist_page.dart';
 import 'package:ecommerce/features/cart/presentation/pages/carts.dart';
 import 'package:ecommerce/features/category/presentation/pages/categories.dart';
-import 'package:ecommerce/features/help&support/presentation/page/helpSupport.dart';
+import 'package:ecommerce/features/help&support/presentation/page/help_support.dart';
 import 'package:ecommerce/features/auth/presentation/pages/login.dart';
-import 'package:ecommerce/features/mainScreen/presentation/page/mainScreen.dart';
+import 'package:ecommerce/features/mainScreen/presentation/page/main_screen.dart';
 import 'package:ecommerce/features/order/presentation/pages/my_order.dart';
-import 'package:ecommerce/features/product/presentation/pages/productDetails.dart';
+import 'package:ecommerce/features/product/presentation/pages/product_details.dart';
 import 'package:ecommerce/features/profile/presentation/page/profile.dart';
-import 'package:ecommerce/features/product/presentation/pages/resultPage.dart';
-import 'package:ecommerce/features/auth/presentation/pages/userDetails.dart';
+import 'package:ecommerce/features/product/presentation/pages/result_page.dart';
+import 'package:ecommerce/features/auth/presentation/pages/user_details.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/constants/routeNameConfig.dart';
+import '../core/constants/route_name_config.dart';
 import '../features/home/presentation/page/home.dart';
 import '../features/product/presentation/pages/products.dart';
 
@@ -68,7 +68,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/products',
         name: AppRoute.product,
-        builder: (_, _) => const products(),
+        builder: (_, _) => const Products(),
         routes: [
           GoRoute(
             path: ':id',
@@ -107,7 +107,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               break;
           }
 
-          return mainScreen(index: index, child: child);
+          return MainScreen(index: index, child: child);
         },
         routes: [
           GoRoute(
@@ -131,7 +131,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/categories',
             name: AppRoute.categories,
-            builder: (_, _) => categories(),
+            builder: (_, _) => Categories(),
           ),
         ],
       ),

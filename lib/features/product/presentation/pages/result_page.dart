@@ -1,10 +1,10 @@
-import '../provider/ResultProvider.dart';
+import '../provider/result_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/utils/searchParameter.dart';
+import '../../../../core/utils/search_parameter.dart';
 import '../provider/product_provider.dart';
-import '../widgets/productCard.dart';
+import '../widgets/product_card.dart';
 
 class ResultPage extends ConsumerWidget {
   final String search;

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:ecommerce/features/category/data/model/category_model.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../../core/constants/apiConfig.dart';
+import '../../../../core/constants/api_config.dart';
 
 class CategoryRepository {
   Future<List<CategoryModel>> getCategories() async {

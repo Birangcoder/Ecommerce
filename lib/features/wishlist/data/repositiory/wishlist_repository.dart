@@ -1,5 +1,5 @@
-import '../../../../core/storage/AppDatabase.dart';
-import '../model/WishlistItem.dart';
+import '../../../../core/storage/app_database.dart';
+import '../model/wishlist_item.dart';
 
 class WishlistRepository {
   final AppDatabase dbProvider;

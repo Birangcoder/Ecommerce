@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../product/presentation/provider/product_provider.dart';
-import '../../../product/presentation/widgets/productCard.dart';
-import '../../../searchResult/presentation/widget/searchBar.dart';
+import '../../../product/presentation/widgets/product_card.dart';
+import '../../../searchResult/presentation/widget/search_bar.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -18,7 +18,7 @@ class HomeScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// 🔍 SEARCH
-            searchBar(),
+            SearchBar(),
 
             products.when(
               loading: () => const Center(child: CircularProgressIndicator()),

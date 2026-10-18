@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/routeNameConfig.dart';
-import '../provider/wishlistRepositoryProvider.dart';
-import '../widget/WishlistCard.dart';
+import '../../../../core/constants/route_name_config.dart';
+import '../provider/wishlist_repository_provider.dart';
+import '../widget/wishlist_card.dart';
 
 class WishlistPage extends ConsumerWidget {
   const WishlistPage({super.key});

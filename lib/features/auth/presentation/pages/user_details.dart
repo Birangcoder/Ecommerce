@@ -1,4 +1,4 @@
-import 'package:ecommerce/features/auth/presentation/provider/authProvider.dart';
+import 'package:ecommerce/features/auth/presentation/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

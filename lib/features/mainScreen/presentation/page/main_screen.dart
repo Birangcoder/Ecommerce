@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/routeNameConfig.dart';
+import '../../../../core/constants/route_name_config.dart';
 import '../../../../widgets/header.dart';
 
-class mainScreen extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   final Widget child;
   final int index;
 
-  const mainScreen({super.key, required this.child, required this.index});
+  const MainScreen({super.key, required this.child, required this.index});
 
   final dest = const [Text("home"), Text("categories"), Text("cart")];
 
@@ -17,7 +17,7 @@ class mainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: header(),
+        title: Header(),
       ),
       body: Padding(padding: const EdgeInsets.all(15.0), child: child),
       bottomNavigationBar: NavigationBar(

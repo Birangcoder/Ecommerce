@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/constants/routeNameConfig.dart';
+import '../../core/constants/route_name_config.dart';
 
-class header extends StatelessWidget {
-  const header({super.key});
+class Header extends StatelessWidget {
+  const Header({super.key});
 
   @override
   Widget build(BuildContext context) {

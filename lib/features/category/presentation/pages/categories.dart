@@ -1,11 +1,11 @@
-import 'package:ecommerce/features/category/presentation/provider/CategoryProvider.dart';
+import 'package:ecommerce/features/category/presentation/provider/category_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../widget/categoryCard.dart';
+import '../widget/category_card.dart';
 
-class categories extends ConsumerWidget {
-  const categories({super.key});
+class Categories extends ConsumerWidget {
+  const Categories({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

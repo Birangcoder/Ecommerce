@@ -1,5 +1,5 @@
-import '../../../../core/storage/AppDatabase.dart';
-import '../model/CartItem.dart';
+import '../../../../core/storage/app_database.dart';
+import '../model/cart_item.dart';
 
 class CartRepository {
   final AppDatabase dbProvider;

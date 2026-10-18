@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/routeNameConfig.dart';
-import '../../../order/data/model/OrderItem.dart';
-import '../provider/cartRepositoryProvider.dart';
-import '../../../order/presentation/provider/orderRepositoryProvider.dart';
 import '../../../../app/utils.dart';
-import '../widgets/CartCard.dart';
+import '../../../../core/constants/route_name_config.dart';
+import '../../../order/data/model/order_item.dart';
+import '../../../order/presentation/provider/order_repository_provider.dart';
+import '../provider/cart_repository_provider.dart';
+import '../widgets/cart_card.dart';
 
 class Carts extends ConsumerStatefulWidget {
   const Carts({super.key});
@@ -97,21 +97,30 @@ class _CartsState extends ConsumerState<Carts> {
                             fontSize: 18,
                           ),
                         ),
-                        RadioListTile<String>(
-                          contentPadding: EdgeInsets.zero,
-                          title: const Text("Cash on Delivery"),
-                          value: "COD",
+
+                        RadioGroup<String>(
                           groupValue: selectedPaymentMethod,
-                          onChanged: (v) =>
-                              setState(() => selectedPaymentMethod = v!),
-                        ),
-                        RadioListTile<String>(
-                          contentPadding: EdgeInsets.zero,
-                          title: const Text("UPI"),
-                          value: "UPI",
-                          groupValue: selectedPaymentMethod,
-                          onChanged: (v) =>
-                              setState(() => selectedPaymentMethod = v!),
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                selectedPaymentMethod = value;
+                              });
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              RadioListTile<String>(
+                                contentPadding: EdgeInsets.zero,
+                                title: const Text("Cash on Delivery"),
+                                value: "COD",
+                              ),
+                              RadioListTile<String>(
+                                contentPadding: EdgeInsets.zero,
+                                title: const Text("UPI"),
+                                value: "UPI",
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

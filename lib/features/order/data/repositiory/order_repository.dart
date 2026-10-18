@@ -1,5 +1,5 @@
-import '../../../../core/storage/AppDatabase.dart';
-import '../model/OrderItem.dart';
+import '../../../../core/storage/app_database.dart';
+import '../model/order_item.dart';
 
 class OrderRepository {
   final AppDatabase dbProvider;

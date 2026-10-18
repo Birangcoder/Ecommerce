@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ecommerce/core/constants/apiConfig.dart';
+import 'package:ecommerce/core/constants/api_config.dart';
 import 'package:ecommerce/features/product/data/model/products_model.dart';
 import 'package:http/http.dart' as http;
 

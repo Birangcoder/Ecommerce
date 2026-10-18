@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/storage/AppDatabase.dart';
-import '../../data/model/OrderItem.dart';
-import '../../data/repositiory/OrderRepository.dart';
+import '../../../../core/storage/app_database.dart';
+import '../../data/model/order_item.dart';
+import '../../data/repositiory/order_repository.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) => AppDatabase.instance,

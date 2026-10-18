@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../cart/data/model/CartItem.dart';
-import '../../../wishlist/data/model/WishlistItem.dart';
-import '../../../cart/presentation/provider/cartRepositoryProvider.dart';
-import '../../../wishlist/presentation/provider/wishlistRepositoryProvider.dart';
-import '../provider/ProductDetailsProvider.dart';
+import '../../../cart/data/model/cart_item.dart';
+import '../../../wishlist/data/model/wishlist_item.dart';
+import '../../../cart/presentation/provider/cart_repository_provider.dart';
+import '../../../wishlist/presentation/provider/wishlist_repository_provider.dart';
+import '../provider/product_details_provider.dart';
 
 class ProductDetails extends ConsumerWidget {
   final String id;
@@ -16,7 +16,6 @@ class ProductDetails extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productId = int.tryParse(id)!;
     final product = ref.watch(productDetailProvider(productId));
-    final screenWidth = MediaQuery.of(context).size.width;
 
     // watch wishlist state so the heart icon updates reactively
     final wishlistAsync = ref.watch(wishlistNotifierProvider);

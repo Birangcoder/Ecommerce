@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../cart/data/model/CartItem.dart';
-import '../../data/model/WishlistItem.dart';
-import '../../../cart/presentation/provider/cartRepositoryProvider.dart';
-import '../provider/wishlistRepositoryProvider.dart';
+import '../../../cart/data/model/cart_item.dart';
+import '../../data/model/wishlist_item.dart';
+import '../../../cart/presentation/provider/cart_repository_provider.dart';
+import '../provider/wishlist_repository_provider.dart';
 
 class WishlistCard extends ConsumerWidget {
   final WishlistItem item;
